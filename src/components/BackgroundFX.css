@@ -1,0 +1,279 @@
+
+.background-3d {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  perspective: 1200px;
+  isolation: isolate;
+  background: #090b0e;
+}
+
+/* Moving background grid */
+.bg-grid {
+  position: absolute;
+  inset: -50%;
+  opacity: 0.12;
+  background-image:
+    linear-gradient(rgba(214, 177, 110, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(214, 177, 110, 0.12) 1px, transparent 1px);
+  background-size: 75px 75px;
+  transform: perspective(600px) rotateX(58deg);
+  animation: gridMove 25s linear infinite;
+  mask-image: radial-gradient(ellipse, black, transparent 75%);
+}
+
+/* Floating objects */
+.floating-object {
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+/* 3D cube */
+.object-cube {
+  top: 18%;
+  left: 12%;
+  width: 100px;
+  height: 100px;
+  animation: floatCube 12s ease-in-out infinite;
+}
+
+.cube {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: rotateCube 18s linear infinite;
+}
+
+.cube span {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(214, 177, 110, 0.65);
+  background: rgba(214, 177, 110, 0.035);
+  box-shadow: inset 0 0 25px rgba(214, 177, 110, 0.08);
+}
+
+.cube span:nth-child(1) {
+  transform: translateZ(50px);
+}
+
+.cube span:nth-child(2) {
+  transform: rotateY(180deg) translateZ(50px);
+}
+
+.cube span:nth-child(3) {
+  transform: rotateY(90deg) translateZ(50px);
+}
+
+.cube span:nth-child(4) {
+  transform: rotateY(-90deg) translateZ(50px);
+}
+
+.cube span:nth-child(5) {
+  transform: rotateX(90deg) translateZ(50px);
+}
+
+.cube span:nth-child(6) {
+  transform: rotateX(-90deg) translateZ(50px);
+}
+
+/* Large metallic ring */
+.object-ring {
+  right: 12%;
+  top: 20%;
+  width: 190px;
+  height: 190px;
+  animation: floatRing 11s ease-in-out infinite;
+}
+
+.ring-3d {
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(214, 177, 110, 0.65);
+  border-radius: 50%;
+  box-shadow:
+    0 0 20px rgba(214, 177, 110, 0.12),
+    inset 0 0 20px rgba(214, 177, 110, 0.1);
+  transform-style: preserve-3d;
+  animation: rotateRing 14s linear infinite;
+}
+
+/* Glass-like sphere */
+.object-sphere {
+  right: 24%;
+  bottom: 17%;
+  width: 85px;
+  height: 85px;
+  animation: floatSphere 9s ease-in-out infinite;
+}
+
+.sphere-3d {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 30% 25%,
+    rgba(255, 255, 255, 0.35),
+    rgba(214, 177, 110, 0.12) 25%,
+    rgba(214, 177, 110, 0.02) 65%,
+    transparent
+  );
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 0 35px rgba(214, 177, 110, 0.13),
+    inset -10px -10px 25px rgba(214, 177, 110, 0.12);
+}
+
+/* Smaller ring */
+.object-ring-small {
+  left: 43%;
+  bottom: 13%;
+  width: 65px;
+  height: 65px;
+  animation: floatRing 8s ease-in-out infinite reverse;
+}
+
+.object-ring-small .ring-3d {
+  border-color: rgba(255, 255, 255, 0.35);
+  animation-duration: 9s;
+}
+
+/* Ambient lighting */
+.ambient-glow {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.12;
+  animation: glowMove 12s ease-in-out infinite alternate;
+}
+
+.glow-one {
+  top: 10%;
+  left: 25%;
+  background: #d6b16e;
+}
+
+.glow-two {
+  right: 5%;
+  bottom: 5%;
+  background: #526b82;
+  animation-delay: -5s;
+}
+
+/* Floating particles */
+.bg-particle {
+  position: absolute;
+  left: var(--left);
+  top: var(--top);
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #d6b16e;
+  box-shadow: 0 0 10px rgba(214, 177, 110, 0.8);
+  opacity: 0;
+  animation: particleMove var(--duration) ease-in-out var(--delay) infinite;
+}
+
+/* Animations */
+@keyframes rotateCube {
+  to {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+
+@keyframes floatCube {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(35px, -45px, 80px);
+  }
+}
+
+@keyframes rotateRing {
+  to {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+
+@keyframes floatRing {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-25px, 35px, 100px);
+  }
+}
+
+@keyframes floatSphere {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-45px, -55px, 100px);
+  }
+}
+
+@keyframes gridMove {
+  to {
+    background-position: 0 150px;
+  }
+}
+
+@keyframes glowMove {
+  to {
+    transform: translate3d(70px, -50px, 0) scale(1.25);
+  }
+}
+
+@keyframes particleMove {
+  0%, 100% {
+    opacity: 0;
+    transform: translate3d(0, 20px, -50px);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translate3d(20px, -40px, 80px);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .object-cube {
+    left: 5%;
+    top: 15%;
+    transform: scale(0.65);
+  }
+
+  .object-ring {
+    right: -45px;
+    top: 25%;
+    transform: scale(0.65);
+  }
+
+  .object-sphere {
+    right: 12%;
+    bottom: 15%;
+    transform: scale(0.7);
+  }
+
+  .object-ring-small {
+    left: 15%;
+    bottom: 10%;
+  }
+
+  .bg-grid {
+    opacity: 0.07;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .background-3d *,
+  .background-3d {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,179 @@
+.footer {
+  padding: 80px 0 40px;
+  background: #040406;
+  border-top: 1px solid var(--border);
+}
+
+.footer-container {
+  width: min(var(--container), 90%);
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 50px;
+}
+
+/* Brand */
+.footer-logo {
+  display: inline-flex;
+  align-items: baseline;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.footer-logo span {
+  color: #ffffff;
+  opacity: 0.6;
+}
+
+.footer-tagline {
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.6;
+  max-width: 320px;
+}
+
+/* Navigation & Socials */
+.footer-heading {
+  display: block;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  opacity: 0.85;
+}
+
+.footer-nav-links,
+.footer-social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-nav-links a,
+.footer-social-links a {
+  color: var(--muted);
+  font-size: 13.5px;
+  transition: color 0.2s ease, transform 0.2s ease;
+  width: fit-content;
+}
+
+.footer-nav-links a:hover,
+.footer-social-links a:hover {
+  color: #ffffff;
+  transform: translateX(3px);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-bottom .copyright {
+  color: #6c6c76;
+  font-size: 12.5px;
+  margin: 0;
+}
+
+/* Liquid Back to Top Button */
+.back-to-top {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  overflow: hidden;
+  isolation: isolate;
+
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.04);
+  color: #ffffff;
+
+  font-size: 12.5px;
+  font-weight: 500;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.35),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.5),
+    0 4px 14px rgba(0, 0, 0, 0.35);
+
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              border-color 0.3s ease,
+              box-shadow 0.3s ease,
+              color 0.3s ease;
+}
+
+/* Liquid Wave Reservoir */
+.back-to-top::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: -20%;
+  width: 140%;
+  height: 240%;
+  background: #ffffff;
+  border-radius: 38% 44% 40% 46%;
+  transform: translateY(0) rotate(0deg);
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.back-to-top:hover::before {
+  transform: translateY(-84%) rotate(180deg);
+}
+
+.back-to-top:hover {
+  color: #050505;
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.9),
+    0 6px 20px rgba(255, 255, 255, 0.2);
+}
+
+.top-arrow {
+  display: inline-block;
+  font-size: 13px;
+  transition: transform 0.2s ease;
+}
+
+.back-to-top:hover .top-arrow {
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 520px) {
+  .footer {
+    padding: 60px 0 30px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
